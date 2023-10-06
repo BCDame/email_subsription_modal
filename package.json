@@ -1,0 +1,11 @@
+{
+  "name": "email_subsription_modal",
+  "version": "1.0.0",
+  "description": "Modal pop-up for subscribing email using html",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

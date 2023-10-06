@@ -1,2 +1,2 @@
-# behidn_popup_v1
-behidn_popup_v1
+# Email subcription modal
+Modal pop-up for subscribing email using html
