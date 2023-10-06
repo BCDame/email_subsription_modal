@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Subscription Modal</title>
+    <!-- Add Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Custom CSS for centering the "Open Modal" button */
+        #openModalContainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        /* Custom CSS for modal header padding and content in-line */
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Centered "Open Modal" Button -->
+    <div id="openModalContainer">
+        <button id="openModalButton" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            Open Modal
+        </button>
+    </div>
+
+    <!-- Email Subscription Modal -->
+    <div id="emailModal" class="fixed inset-0 flex items-center justify-center z-50 hidden">
+        <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
+
+        <!-- Modal Content -->
+        <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h2 class="text-2xl font-semibold">Subscribe to Our Newsletter</h2>
+                <button id="closeModalButton" class="modal-close px-2 py-1 rounded-full hover:bg-gray-300">&times;</button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body px-4 py-2">
+                <p>Stay up to date with our latest news and updates!</p>
+                <form id="subscribeForm" class="mt-4">
+                    <input type="email" id="emailInput" class="w-full border p-2 rounded mb-2" placeholder="Enter your email" required>
+                    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Thanks for Subscribing Modal -->
+    <div id="thanksModal" class="fixed inset-0 flex items-center justify-center z-50 hidden">
+        <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
+
+        <!-- Modal Content -->
+        <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h2 class="text-2xl font-semibold">Thanks for Subscribing!</h2>
+                <button id="closeThanksModalButton" class="modal-close px-2 py-1 rounded-full hover:bg-gray-300">&times;</button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body px-4 py-2 text-center">
+                <p>You are now subscribed to our newsletter.</p>
+                <button id="closeThanksModalButton" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        const openModalButton = document.getElementById('openModalButton');
+        const closeModalButton = document.getElementById('closeModalButton');
+        const emailModal = document.getElementById('emailModal');
+
+        openModalButton.addEventListener('click', () => {
+            emailModal.classList.remove('hidden');
+        });
+
+        closeModalButton.addEventListener('click', () => {
+            emailModal.classList.add('hidden');
+        });
+
+        const subscribeForm = document.getElementById('subscribeForm');
+        const emailInput = document.getElementById('emailInput');
+        const thanksModal = document.getElementById('thanksModal');
+        const closeThanksModalButton = document.getElementById('closeThanksModalButton');
+
+        subscribeForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const emailAddress = emailInput.value;
+            // You can replace this with your server-side logic to handle the subscription.
+            // For this example, we're just showing the "Thanks for Subscribing" modal.
+            emailModal.classList.add('hidden');
+            thanksModal.classList.remove('hidden');
+        });
+
+        closeThanksModalButton.addEventListener('click', () => {
+            thanksModal.classList.add('hidden');
+        });
+    </script>
+</body>
+</html>
